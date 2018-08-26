@@ -15,6 +15,11 @@ namespace roundhouse.databases.oracle
     {
         private string connect_options = "Integrated Security";
 
+        public override bool split_batch_statements
+        {
+            get { return false; }
+        }
+
         public override string sql_statement_separator_regex_pattern
         {
             get { return @"(?<KEEP1>^(?:.)*(?:-{2}).*$)|(?<KEEP1>/{1}\*{1}[\S\s]*?\*{1}/{1})|(?<KEEP1>\s)(?<BATCHSPLITTER>[;|/])(?<KEEP2>\s)|(?<KEEP1>\s)(?<BATCHSPLITTER>[;|/])(?<KEEP2>$)"; }
